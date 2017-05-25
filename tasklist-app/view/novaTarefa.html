@@ -1,0 +1,23 @@
+<div class="jumbotron">
+	<form name="tarefaForm">
+		
+		<input class="form-control" type="text" ng-model="tarefa.titulo" name="titulo" placeholder="Título" ng-required="true" />
+		<textarea class="form-control" ng-model="tarefa.descricao" rows="3" placeholder="Descrição" ng-required="true"></textarea>	
+		
+	</form>
+	<div ng-show="tarefaForm.titulo.$dirty" ng-messages="tarefaForm.titulo.$error">
+		<div ng-message="required" class="alert alert-danger">
+			Por favor, preencha o campo título!
+		</div>
+		<div ng-message="minlength" class="alert alert-danger">
+			O campo título deve ter no mínimo 10 caracteres.
+		</div>
+	</div>	
+	<div ng-show="tarefaForm.descricao.$dirty" ng-messages="tarefaForm.descricao.$error">
+		<div ng-message="required" class="alert alert-danger">
+			Por favor, preencha o campo descrição!
+		</div>		
+	</div>	
+
+	<button class="btn btn-primary btn-block" ng-click="adicionarTarefa(tarefa)" ng-disabled="tarefaForm.$invalid">Adicionar tarefa</button>
+</div>

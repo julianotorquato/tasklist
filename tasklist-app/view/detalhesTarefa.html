@@ -1,0 +1,24 @@
+<div class="jumbotron">
+	<h2>Detalhes</h2>
+
+	<table class="table">
+		<tr>
+			<td>{{tarefa.idTarefa}}</td>
+		</tr>
+		<tr>
+			<td>{{tarefa.titulo}}</td>
+		</tr>
+		<tr>
+			<td>{{tarefa.descricao}}</td>
+		</tr>
+		<tr>
+			<td>			
+				<div ng-if="tarefa.status === true">Sim</div>
+				<div ng-if="tarefa.status === false">Não</div>
+			</td>	
+		</tr>
+
+
+	</table>
+	<a class="btn btn-primary" href="#/tarefas">Voltar</a>
+</div>

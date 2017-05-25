@@ -1,0 +1,31 @@
+<div class="jumbotron">
+	{{app}}
+	<input class="form-control" type="text" ng-model="criterioDeBusca" ng-model-options="{updateOn: 'default blur', debounce:{default: 500, blur: 0}}" placeholder="O que você está buscando?"/>
+	<table ng-show="tarefas.length > 0" class="table table-striped">
+		<tr>
+			<th></th>			
+			<th><a href="" ng-click="ordenarPor('idTarefa')">Sequencial</a></th>
+			<th><a href="" ng-click="ordenarPor('titulo')">Título</a></th>
+			<th>Descrição</th>
+			<th>Concluído?</th>			
+		</tr>
+		<tr ng-class="{'selecionado negrito': tarefa.selecionado}" ng-repeat="tarefa in tarefas | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao track by tarefa.idTarefa">
+			<td><input type="checkbox" ng-model="tarefa.selecionado" ng-click="verificarTarefaSelecionada(tarefas)"/></td>
+			<td>{{::tarefa.idTarefa}}</td>
+			<td><a href="#/detalhesTarefa/{{tarefa.idTarefa}}">{{::tarefa.titulo}}</a></td>
+			<td>{{tarefa.descricao}}</td>			
+			<td>			
+				<div ng-if="tarefa.status === true">
+					Sim
+				</div>
+				<div ng-if="tarefa.status === false">
+					Não
+				</div>
+			</td>
+			
+		</tr>
+	</table>	
+	<hr/>
+	<a class="btn btn-primary btn-block" href="#/novaTarefa">Nova tarefa</a>
+	<button class="btn btn-danger btn-block" ng-click="apagarTarefas(tarefas)" ng-if="hasTarefaSelecionada">Apagar tarefas</button>
+</div>

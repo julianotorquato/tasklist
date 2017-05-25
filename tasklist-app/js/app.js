@@ -1,0 +1,1 @@
+angular.module("listaTarefa", ["ngMessages", "ui", "ngRoute"]);
